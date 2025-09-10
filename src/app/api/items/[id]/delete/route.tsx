@@ -1,7 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 
-export async function POST(_: Request, { params }: { params: { id: string } }) {
-  await prisma.item.delete({ where: { id: params.id } });
+export const runtime = "nodejs";
+
+export async function POST(_req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
+  const { id } = await ctx.params; // 👈 await the Promise
+  await prisma.item.delete({ where: { id } });
   return NextResponse.json({ ok: true });
 }
