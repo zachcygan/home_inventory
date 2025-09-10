@@ -1,0 +1,36 @@
+enum ItemStatus {
+  OK
+  NEEDS_REVIEW
+  MISSING
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Bin {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  items     Item[]
+}
+
+model Item {
+  id        String     @id @default(cuid())
+  name      String
+  quantity  Int        @default(1)
+  notes     String?
+  status    ItemStatus @default(OK)
+  bin       Bin        @relation(fields: [binId], references: [id])
+  binId     String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
