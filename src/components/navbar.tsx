@@ -5,7 +5,7 @@ export default function Navbar() {
   return(
     <div className="flex justify-between px-5 py-2 outline-none">
       <Link href='/' className="flex gap-2 items-center">
-        <div className="text-6xl font-bold">
+        <div className="text-4xl font-bold antialiased">
           HomeBins
         </div>
         <Image
