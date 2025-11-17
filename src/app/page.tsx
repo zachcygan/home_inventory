@@ -22,13 +22,14 @@ export default async function HomePage() {
         ) : (
           <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {bins.map((b) => (
-              <li key={b.id} className="rounded-lg border p-4">
-                <div className="mb-2 flex items-center justify-between">
-                  <h3 className="font-semibold">{b.name}</h3>
-                  <Link className="text-blue-600 hover:underline" href={`/bin/${b.slug}`}>Open</Link>
-                </div>
-                {b.notes && <p className="text-sm text-slate-600 line-clamp-2">{b.notes}</p>}
-              </li>
+              <Link className="text-blue-600" href={`/bin/${b.slug}`} key={b.id}>
+                <li key={b.id} className="rounded-lg border p-4">
+                  <div className="mb-2 flex items-center justify-between">
+                    <h3 className="font-semibold">{b.name}</h3>
+                  </div>
+                  {b.notes && <p className="text-sm text-slate-600 line-clamp-2">{b.notes}</p>}
+                </li>
+              </Link>
             ))}
           </ul>
         )}
