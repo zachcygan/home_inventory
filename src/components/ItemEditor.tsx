@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 
 export default function ItemEditor({ binId }: { binId: string }) {
@@ -13,7 +13,9 @@ export default function ItemEditor({ binId }: { binId: string }) {
       body: JSON.stringify({ binId, name, quantity, notes }),
     });
     if (res.ok) {
-      setName(""); setQuantity(1); setNotes("");
+      setName("");
+      setQuantity(1);
+      setNotes("");
       location.reload(); // simplest refresh; can be optimized with SWR later
     }
   }
@@ -26,7 +28,9 @@ export default function ItemEditor({ binId }: { binId: string }) {
         <input className="rounded border px-3 py-2" placeholder="Quantity" type="number" min={1} value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value || "1", 10))} />
         <input className="rounded border px-3 py-2 sm:col-span-2" placeholder="Notes (optional)" value={notes} onChange={(e) => setNotes(e.target.value)} />
       </div>
-      <button disabled={!name} onClick={onSubmit} className="rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50">Add</button>
+      <button disabled={!name} onClick={onSubmit} className="rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50">
+        Add
+      </button>
     </div>
   );
 }

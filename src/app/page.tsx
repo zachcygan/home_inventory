@@ -2,10 +2,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import NewBinForm from "@/components/NewBinForm";
 
-
 export default async function HomePage() {
   const bins = await prisma.bin.findMany({ orderBy: { createdAt: "desc" } });
-
 
   return (
     <main className="space-y-8">
@@ -13,7 +11,6 @@ export default async function HomePage() {
         <h2 className="mb-3 text-lg font-medium">Create a new bin</h2>
         <NewBinForm />
       </section>
-
 
       <section className="rounded-2xl bg-white p-5 shadow">
         <h2 className="mb-4 text-lg font-medium">Your bins</h2>
@@ -27,7 +24,7 @@ export default async function HomePage() {
                   <div className="mb-2 flex items-center justify-between">
                     <h3 className="font-semibold">{b.name}</h3>
                   </div>
-                  {b.notes && <p className="text-sm text-slate-600 line-clamp-2">{b.notes}</p>}
+                  {b.notes && <p className="line-clamp-2 text-sm text-slate-600">{b.notes}</p>}
                 </li>
               </Link>
             ))}
@@ -35,11 +32,12 @@ export default async function HomePage() {
         )}
       </section>
 
-
       <section className="rounded-2xl bg-white p-5 shadow">
         <h2 className="mb-2 text-lg font-medium">Scan a bin QR</h2>
         <p className="mb-3 text-sm text-slate-600">Use your phone or a webcam to jump straight to a bin.</p>
-        <a href="/scan" className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm hover:bg-slate-50">Open Scanner</a>
+        <a href="/scan" className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm hover:bg-slate-50">
+          Open Scanner
+        </a>
       </section>
     </main>
   );

@@ -2,19 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
-  return(
+  return (
     <div className="flex justify-between px-5 py-2 outline-none">
-      <Link href='/' className="flex gap-2 items-center">
-        <div className="text-4xl font-bold antialiased">
-          HomeBins
-        </div>
-        <Image
-          src="/assets/images/open-box.png"
-          alt="HomeBins Logo"
-          width={32}
-          height={32}
-        />
+      <Link href="/" className="flex items-center gap-2">
+        <div className="text-4xl font-bold antialiased">HomeBins</div>
+        <Image src="/assets/images/open-box.png" alt="HomeBins Logo" width={32} height={32} />
       </Link>
     </div>
-  )
+  );
 }

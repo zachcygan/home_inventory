@@ -18,14 +18,12 @@ export const metadata: Metadata = {
   description: "Organize your bins at home",
 };
 
-export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </body>
     </html>
   );
