@@ -9,11 +9,15 @@
   },
   "dependencies": {
     "@prisma/client": "^6.15.0",
+<<<<<<< HEAD
     "next": "^15.5.7",
     "nextjs": "^0.0.3",
+=======
+    "next": "^16.0.10",
+>>>>>>> dc25f92dc3a7de359e75e55d0f907232f800119a
     "prisma": "^6.15.0",
     "qrcode": "^1.5.4",
-    "react": "19.1.0",
+    "react": "^19.2.3",
     "react-dom": "19.1.0"
   },
   "devDependencies": {
