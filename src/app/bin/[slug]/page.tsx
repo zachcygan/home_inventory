@@ -4,11 +4,12 @@ import ItemEditor from "@/components/ItemEditor";
 import QRBlock from "@/components/QRBlock";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function BinPage({ params }: Props) {
-  const bin = await prisma.bin.findUnique({ where: { slug: params.slug }, include: { items: { orderBy: { createdAt: "desc" } } } });
+  const { slug } = await params;
+  const bin = await prisma.bin.findUnique({ where: { slug }, include: { items: { orderBy: { createdAt: "desc" } } } });
   if (!bin) return notFound();
 
   return (
