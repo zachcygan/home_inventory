@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import ItemEditor from "@/components/ItemEditor";
 import QRBlock from "@/components/QRBlock";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -44,7 +45,9 @@ export default async function BinPage({ params }: Props) {
                     <p className="text-xs text-slate-500">Status: {it.status}</p>
                   </div>
                   <form action={`/api/items/${it.id}/delete`} method="post">
-                    <button className="text-sm text-red-600 hover:underline">Delete</button>
+                    <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700">
+                      Delete
+                    </Button>
                   </form>
                 </div>
               </li>

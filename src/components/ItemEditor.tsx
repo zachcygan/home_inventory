@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function ItemEditor({ binId }: { binId: string }) {
   const [name, setName] = useState("");
@@ -24,13 +26,13 @@ export default function ItemEditor({ binId }: { binId: string }) {
     <div className="space-y-3">
       <h4 className="text-sm font-medium">Add item</h4>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-4">
-        <input className="rounded border px-3 py-2" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input className="rounded border px-3 py-2" placeholder="Quantity" type="number" min={1} value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value || "1", 10))} />
-        <input className="rounded border px-3 py-2 sm:col-span-2" placeholder="Notes (optional)" value={notes} onChange={(e) => setNotes(e.target.value)} />
+        <Input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+        <Input placeholder="Quantity" type="number" min={1} value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value || "1", 10))} />
+        <Input className="sm:col-span-2" placeholder="Notes (optional)" value={notes} onChange={(e) => setNotes(e.target.value)} />
       </div>
-      <button disabled={!name} onClick={onSubmit} className="rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50">
+      <Button disabled={!name} onClick={onSubmit}>
         Add
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function NewBinForm() {
   const [name, setName] = useState("");
@@ -21,11 +23,9 @@ export default function NewBinForm() {
 
   return (
     <form action={createBin} className="space-y-3">
-      <input className="w-full rounded border px-3 py-2" placeholder="Bin name (e.g., Garage Shelf A)" value={name} onChange={(e) => setName(e.target.value)} />
-      <textarea className="w-full rounded border px-3 py-2" placeholder="Notes (optional)" value={notes} onChange={(e) => setNotes(e.target.value)} />
-      <button disabled={!name} className="rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50">
-        Create
-      </button>
+      <Input className="w-full" placeholder="Bin name (e.g., Garage Shelf A)" value={name} onChange={(e) => setName(e.target.value)} />
+      <textarea className="flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" placeholder="Notes (optional)" value={notes} onChange={(e) => setNotes(e.target.value)} />
+      <Button disabled={!name}>Create</Button>
     </form>
   );
 }
