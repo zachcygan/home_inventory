@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import QRCode from "qrcode";
 
 export default function QRBlock({ slug }: { slug: string }) {
@@ -20,9 +21,9 @@ export default function QRBlock({ slug }: { slug: string }) {
     <div className="flex flex-col items-center gap-2">
       <canvas ref={canvasRef} className="rounded border bg-white p-1" />
       {dataUrl && (
-        <a download={`bin-${slug}.png`} href={dataUrl} className="text-sm text-blue-600 hover:underline">
+        <Link download={`bin-${slug}.png`} href={dataUrl} className="text-sm text-blue-600 hover:underline">
           Download QR
-        </a>
+        </Link>
       )}
       <p className="text-xs text-slate-600">Scan to open this bin.</p>
     </div>
